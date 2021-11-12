@@ -4,10 +4,10 @@ function init() {
 
 	// initialize objects
 	var sphereMaterial = getMaterial('standard', 'rgb(255, 255, 255)');
-	var sphere = getSphere(sphereMaterial, 1, 24);
+	var sphere = getSphere(sphereMaterial, 1, 1000);
 
 	var planeMaterial = getMaterial('standard', 'rgb(255, 255, 255)');
-	var plane = getPlane(planeMaterial, 300);
+	var plane = getPlane(planeMaterial, 1000);
 
 	var lightLeft = getSpotLight(1, 'rgb(255, 220, 180)');
 	var lightRight = getSpotLight(1, 'rgb(255, 220, 180)');
@@ -44,8 +44,8 @@ function init() {
     planeMaterial.map = loader.load('/assets/textures/checkerboard.jpg')
     planeMaterial.bumpMap = loader.load('/assets/textures/checkerboard.jpg')
     planeMaterial.rouphnessMap = loader.load('/assets/textures/checkerboard.jpg')
-    planeMaterial.bumpScale = 0.01
-    planeMaterial.metalness = 0.01
+    planeMaterial.bumpScale = 0.1
+    planeMaterial.metalness = 0.3
     planeMaterial.rouphness = 0.7
     planeMaterial.envMap = reflectionCube
     sphereMaterial.roughnessMap = loader.load('/assets/textures/fingerprints.jpg')
@@ -56,7 +56,7 @@ function init() {
         var texture = planeMaterial[mapName]
         texture.wrapS = THREE.RepeatWrapping
         texture.wrapT = THREE.RepeatWrapping
-        texture.repeat.set(30,30)
+        texture.repeat.set(60,60)
     })
 
 
@@ -165,7 +165,6 @@ function getPlane(material, size) {
 	material.side = THREE.DoubleSide;
 	var obj = new THREE.Mesh(geometry, material);
 	obj.receiveShadow = true;
-
 	return obj;
 }
 
